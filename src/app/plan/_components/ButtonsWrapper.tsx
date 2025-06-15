@@ -2,24 +2,10 @@
 
 import { PayPalButtons, usePayPalScriptReducer } from "@paypal/react-paypal-js";
 import {
-  PayPalButtonCreateOrder,
+  PayPalButtonCreateSubscription,
   PayPalButtonOnApprove,
 } from "@paypal/paypal-js";
 import React from "react";
-
-const createOrder: PayPalButtonCreateOrder = (data, actions) => {
-  return actions.order.create({
-    intent: "CAPTURE",
-    purchase_units: [
-      {
-        amount: {
-          value: "10.00",
-          currency_code: "USD",
-        },
-      },
-    ],
-  });
-};
 
 const onApprove: PayPalButtonOnApprove = async (data, actions) => {
   if (actions.order) {
@@ -32,16 +18,26 @@ const onApprove: PayPalButtonOnApprove = async (data, actions) => {
   }
 };
 
-const ButtonsWrapper = () => {
+const ButtonsWrapper = ({ planId }: { planId: string }) => {
   const [{ isPending }] = usePayPalScriptReducer();
+
+  const createSubscription: PayPalButtonCreateSubscription = (
+    data,
+    actions
+  ) => {
+    return actions.subscription.create({
+      plan_id: planId,
+    });
+  };
 
   return (
     <>
       {isPending && <div className="spinner">Cargando...</div>}
       <PayPalButtons
+        fundingSource="paypal"
         style={{ layout: "vertical" }}
         disabled={false}
-        createOrder={createOrder}
+        createSubscription={createSubscription}
         onApprove={onApprove}
       />
     </>

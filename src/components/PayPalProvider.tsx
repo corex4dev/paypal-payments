@@ -9,7 +9,8 @@ const PayPalProvider = ({ children }: PropsWithChildren) => {
       options={{
         clientId: process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID!,
         components: "buttons",
-        currency: "USD",
+        currency: "CAD",
+        vault: true
       }}
     >
       {children}
