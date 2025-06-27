@@ -15,6 +15,14 @@ const Navbar = () => {
             Subscripciones
           </Link>
         </li>
+        <li>
+          <Link
+            href="/manage-subscription"
+            className="text-blue-500 hover:text-yellow-500"
+          >
+            Gestionar suscripción
+          </Link>
+        </li>
       </ul>
     </nav>
   );

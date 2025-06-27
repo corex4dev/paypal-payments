@@ -1,6 +1,7 @@
+import { authenticatePayPal } from "@/app/actions/auth";
+import { paypalApiRoot } from "@/lib/constants";
+import { revalidateTag } from "next/cache";
 import { NextRequest, NextResponse } from "next/server";
-
-const paypalApiRoot = "https://api-m.sandbox.paypal.com/v1";
 
 export const POST = async (req: NextRequest) => {
   const headers = req.headers;
@@ -12,10 +13,12 @@ export const POST = async (req: NextRequest) => {
     return NextResponse.json({ error: "Invalid signature" }, { status: 400 });
   }
 
-  const data = body.resource;
-
-  console.log(data);
+  console.log(body);
   // Do something
+
+  if (body.event_type === "BILLING.SUBSCRIPTION.UPDATED") {
+    // Update subscription plan
+  }
 
   return NextResponse.json({ message: "Success" }, { status: 200 });
 };
@@ -60,23 +63,4 @@ const verifySignature = async (
 
     return isValid.verification_status === "SUCCESS";
   }
-};
-
-const authenticatePayPal = async (): Promise<string> => {
-  const response = await fetch(`${paypalApiRoot}/oauth2/token`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/x-www-form-urlencoded",
-      Authorization: `Basic ${Buffer.from(
-        `${process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID}:${process.env.PAYPAL_CLIENT_SECRET}`
-      ).toString("base64")}`,
-    },
-    body: new URLSearchParams({
-      grant_type: `client_credentials`,
-    }),
-  });
-
-  const data = await response.json();
-
-  return data.access_token;
 };
