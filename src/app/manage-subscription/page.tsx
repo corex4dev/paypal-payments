@@ -1,5 +1,5 @@
 import React from "react";
-import { getSubscription } from "../actions/subscription";
+import { getSubscription } from "@/actions/subscription";
 import SubscriptionActions from "./SubscriptionActions";
 import { plans } from "@/lib/constants";
 

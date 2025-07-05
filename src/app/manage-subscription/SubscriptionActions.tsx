@@ -6,7 +6,7 @@ import {
   suspendSubscription,
   cancelSubscription,
   modifyPlan,
-} from "../actions/subscription";
+} from "@/actions/subscription";
 import Loader from "@/components/Loader/Loader";
 import { plans } from "@/lib/constants";
 

@@ -1,4 +1,5 @@
 export const paypalApiRoot = "https://api-m.sandbox.paypal.com/v1";
+export const paypalApiRootV2 = "https://api-m.sandbox.paypal.com/v2";
 
 export const plans = [
   {

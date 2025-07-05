@@ -9,6 +9,16 @@
   animation: rotation 1s linear infinite;
 }
 
+.md {
+  width: 48px;
+  height: 48px;
+}
+
+.sm {
+  width: 24px;
+  height: 24px;
+}
+
 @keyframes rotation {
   0% {
     transform: rotate(0deg);

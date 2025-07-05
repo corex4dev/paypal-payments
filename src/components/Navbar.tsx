@@ -23,6 +23,14 @@ const Navbar = () => {
             Gestionar suscripción
           </Link>
         </li>
+        <li>
+          <Link
+            href="/extended-checkout"
+            className="text-blue-500 hover:text-yellow-500"
+          >
+            Checkout extendido
+          </Link>
+        </li>
       </ul>
     </nav>
   );

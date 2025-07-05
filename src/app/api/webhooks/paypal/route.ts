@@ -1,4 +1,4 @@
-import { authenticatePayPal } from "@/app/actions/auth";
+import { authenticatePayPal } from "@/actions/auth";
 import { paypalApiRoot } from "@/lib/constants";
 import { revalidateTag } from "next/cache";
 import { NextRequest, NextResponse } from "next/server";
