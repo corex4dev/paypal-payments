@@ -31,6 +31,14 @@ const Navbar = () => {
             Checkout extendido
           </Link>
         </li>
+        <li>
+          <Link
+            href="/invoices"
+            className="text-blue-500 hover:text-yellow-500"
+          >
+            Facturas
+          </Link>
+        </li>
       </ul>
     </nav>
   );

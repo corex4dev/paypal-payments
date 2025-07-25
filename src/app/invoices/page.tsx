@@ -1,22 +1,8 @@
 import React from "react";
-import ClientComponent from "./ClientComponent";
+import { cart } from "../extended-checkout/page";
+import InvoiceClient from "./InvoiceClient";
 
-export const cart = [
-  {
-    name: "Split Sneakers",
-    price: 150,
-  },
-  {
-    name: "Echo Elegance",
-    price: 90,
-  },
-  {
-    name: "Tax",
-    price: 10,
-  },
-];
-
-const ExtendedChecoutPage = () => {
+const InvoicesPage = () => {
   return (
     <div className="p-4">
       <div className="md:max-w-5xl max-w-xl mx-auto">
@@ -39,12 +25,8 @@ const ExtendedChecoutPage = () => {
             </ul>
           </div>
           <div className="lg:col-span-2 max-md:order-1">
-            <h2 className="text-3xl font-semibold ">Make a payment</h2>
-            <p className="text-slate-500 text-sm mt-4 mb-8">
-              Complete your transaction swiftly and securely with our
-              easy-to-use payment process.
-            </p>
-            <ClientComponent cart={cart} />
+            <h2 className="text-3xl font-semibold ">Factura</h2>
+            <InvoiceClient cart={cart} />
           </div>
         </div>
       </div>
@@ -52,4 +34,4 @@ const ExtendedChecoutPage = () => {
   );
 };
 
-export default ExtendedChecoutPage;
+export default InvoicesPage;
